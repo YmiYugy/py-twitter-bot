@@ -21,4 +21,5 @@ def idle_text():
     berlin_time = datetime.now(timezone('Europe/Berlin'))
     formatted_time = berlin_time.strftime("%H:%M:%S on a %A")
     text = "It is " + formatted_time + "!"
+    text = "Whats up, folks?"
     return text
