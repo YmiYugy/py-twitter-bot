@@ -4,6 +4,7 @@
 from datetime import datetime
 # convert times according to time zones
 from pytz import timezone
+from requests import get
 
 def reply(tweet):
     """Return text to be used as a reply"""
@@ -22,4 +23,10 @@ def idle_text():
     formatted_time = berlin_time.strftime("%H:%M:%S on a %A")
     text = "It is " + formatted_time + "!"
     text = "Whats up, folks?"
+    data = get('https://quotesondesign.com/wp-json/posts?filter[orderby]=rand').json()
+    quote = data[0]['content']
+    text = quote
+    data = get('https://quotesondesign.com/wp-json/posts?filter[orderby]=rand').json()
+    text += "\n"
+    text += data[0]['title']
     return text
